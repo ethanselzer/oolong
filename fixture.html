@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>oolong fixture</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="vendor/mocha.js"></script>
+    <script src="vendor/chai.js"></script>
+    <script src="vendor/sinon.js"></script>
+    <script src="vendor/sinon-chai.js"></script>
+    <script src="vendor/chai-jquery.js"></script>
+    <script src="js/oolong-frame.js"></script>
+    <script src="specs/specs.js"></script>
+</head>
+<body style="margin:0;">
+    <div>
+        <div style="height:100px; border-bottom:2px solid #ccc;">
+            <h1 style="color:#666; line-height:100px; padding-left:40px;">oolong</h1>
+        </div>
+        <div style="padding:25px 40px;">
+            <div style="margin-bottom:15px"><input type="text" id="name"></div>
+            <input type="submit" id="button">
+        </div>
+    </div>
+    <script>
+        $( '#button' ).on( 'click', function(){
+            if( ! validateRequired( this ) ){
+                $( '#name' ).css( 'border-color', 'rgb(255, 0, 0)' );
+            }
+        } );
+
+        function validateRequired( el ){
+            return !! el.value;
+        }
+    </script>
+</body>
+</html>
