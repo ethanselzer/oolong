@@ -19,18 +19,22 @@
         </div>
         <div style="padding:25px 40px;">
             <div style="margin-bottom:15px"><input type="text" id="name"></div>
-            <input type="submit" id="button">
+            <input type="button" id="button" value="Submit">
         </div>
     </div>
     <script>
         $( '#button' ).on( 'click', function(){
-            if( ! validateRequired( this ) ){
-                $( '#name' ).css( 'border-color', 'rgb(255, 0, 0)' );
+            var name = $( '#name' );
+            if( ! validateRequired( name ) ){
+                name.css( 'border-color', 'rgb(255, 0, 0)' );
+            }
+            else{
+                name.css( 'border-color', 'rgb(0, 255, 0 )' );
             }
         } );
 
         function validateRequired( el ){
-            return !! el.value;
+            return !! el.val();
         }
     </script>
 </body>

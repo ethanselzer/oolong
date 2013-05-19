@@ -9,16 +9,25 @@
         it( 'has a button', function(){
             expect( $( 'input#button' ) ).to.exist;
         } );
-        describe( 'Validates Input', function(){
-            var errorColor;
+        describe( 'Validates Text Field', function(){
+            var errorColor, successColor, btn, name;
 
             before( function(){
-                var errorColor = 'rgb(255, 0, 0 )';
+                errorColor = 'rgb(255, 0, 0)';
+                successColor = 'rgb(0, 255, 0)';
+                btn = $( '#button' );
+                name = $( '#name' );
             } );
 
-            it( 'text field must not be empty', function(){
-                $( '#button' ).trigger( 'click' );
-                expect( $( '#name' ) ).to.have.css( 'border-color', errorColor );
+            it( 'must not be empty', function(){
+                btn.trigger( 'click' );
+                expect( name ).to.have.css( 'border-color', errorColor );
+            } );
+
+            it( 'accepts all other input', function(){
+                name.val( 'foo bar' );
+                btn.trigger( 'click' );
+                expect( name ).to.have.css( 'border-color', successColor );
             } );
         } );
     } );
